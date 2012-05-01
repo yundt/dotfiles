@@ -1,0 +1,5 @@
+color railscasts
+set guioptions=egmrt
+set nonumber
+set vb
+set wrap
