@@ -48,3 +48,5 @@ bindkey '^P' history-search-backward
 bindkey '^N' history-search-forward
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
+
+setopt AUTO_CD
