@@ -6,6 +6,7 @@ SKIP = %w{
   .git
   .gitignore
   Rakefile
+  README.md
 } + File.open('.gitignore').read.split
 
 def dotfiles
