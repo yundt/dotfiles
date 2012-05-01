@@ -11,6 +11,7 @@ ZSH_THEME="tjkirch"
 alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias lsl="ls -alh"
+alias gd="git diff"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
