@@ -1,0 +1,13 @@
+[user]
+	name = Marek Nowak
+	email = mareknowakk@gmail.com
+[github]
+	user = yundt
+[http]
+	sslVerify = no
+[color]
+	ui = true
+[push]
+	default = current
+[pull]
+	default = current
