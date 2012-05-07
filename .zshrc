@@ -12,6 +12,7 @@ alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias lsl="ls -alh"
 alias gd="git diff"
+alias gs="git status"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -39,7 +40,7 @@ source $ZSH/oh-my-zsh.sh
 export PATH=$PATH # defaults to what's in /etc/zshenv
 
 export MAGICK_HOME="$HOME/bin/ImageMagick-6.6.7"
-PATH=~/bin:/usr/local/mysql/bin:$MAGICK_HOME/bin:"${PATH}"
+PATH=~/bin:/usr/local/mysql/bin:$MAGICK_HOME/bin:/usr/local/bin:"${PATH}"
 export PATH
 
 NODE_PATH=/usr/local/lib/node_modules:"${PATH}"
