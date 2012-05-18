@@ -1,5 +1,7 @@
 color solarized
 set guioptions=egmrt
-set nonumber
 set vb
 set wrap
+map <M> <Esc>
+map Esc to jj
+imap jj <Esc>
