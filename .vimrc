@@ -25,7 +25,7 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'taq/vim-rspec'
 Bundle 'cakebaker/scss-syntax'
 Bundle 'tpope/vim-fugitive'
-"Bundle 'muz/vim-gemfile'
+Bundle 'vim-scripts/VimClojure'
 
 filetype plugin indent on     " required!
 
