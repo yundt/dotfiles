@@ -26,6 +26,7 @@ Bundle 'taq/vim-rspec'
 Bundle 'cakebaker/scss-syntax'
 Bundle 'tpope/vim-fugitive'
 Bundle 'vim-scripts/VimClojure'
+Bundle 'othree/html5.vim'
 
 filetype plugin indent on     " required!
 
@@ -36,6 +37,8 @@ set encoding=utf-8
 syntax enable
 let g:solarized_termtrans = 1
 colorscheme solarized
+
+let g:vimclojure#ParenRainbow=1
 
 set tabstop=2
 set shiftwidth=2
