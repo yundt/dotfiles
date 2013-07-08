@@ -33,15 +33,23 @@ def symlink_dotfiles
   end
 end
 
+def setup_vundle
+  `git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle`
+  `vim +BundleInstall +qall`
+end
+
 desc 'backup and symlink this .shit'
 task :backup_and_symlink_dotfiles do
-  puts "Backing up old .shit..."
+  puts 'Backing up old .shit...'
   backup_dotfiles
 
-  puts "Symlinking this .shit..."
+  puts 'Symlinking this .shit...'
   symlink_dotfiles
 
-  puts "Done."
+  puts 'Setting up Vundle...'
+  setup_vundle
+
+  puts 'Done.'
 end
 
 task :default => :backup_and_symlink_dotfiles
