@@ -58,18 +58,3 @@ set directory=/tmp
 
 " let g:ctrlp_map = '<c-p>'
 map <C-t> :CtrlP<CR>
-
-" custom hacks
-
-map <M> <Esc>
-map Esc to jj
-imap jj <Esc>
-
-"" Removes trailing spaces
-"" function! TrimWhiteSpace()
-""   %s/\s\+$//e
-"" endfunction
-"" autocmd FileWritePre    * :call TrimWhiteSpace()
-"" autocmd FileAppendPre   * :call TrimWhiteSpace()
-"" autocmd FilterWritePre  * :call TrimWhiteSpace()
-"" autocmd BufWritePre     * :call TrimWhiteSpace()
