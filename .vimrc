@@ -10,7 +10,7 @@ call vundle#rc()
 " required!
 Bundle 'gmarik/vundle'
 
-Bundle 'altercation/vim-colors-solarized'
+Bundle 'chriskempson/base16-vim'
 Bundle 'vim-scripts/Tibet'
 Bundle 'vim-scripts/ctrlp.vim'
 Bundle 'vim-coffee-script'
@@ -38,9 +38,7 @@ filetype plugin indent on     " required!
 set encoding=utf-8
 
 syntax enable
-let g:solarized_termtrans = 1
-set background=light
-colorscheme solarized
+colorscheme base16-bright
 
 let g:vimclojure#ParenRainbow=1
 
