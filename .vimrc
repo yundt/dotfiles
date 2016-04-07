@@ -24,12 +24,15 @@ Bundle 'groenewege/vim-less'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-rails'
 Bundle 'vim-ruby/vim-ruby'
-Bundle 'taq/vim-rspec'
 Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-classpath'
-Bundle 'vim-scripts/VimClojure'
-Bundle 'tpope/vim-fireplace'
 Bundle 'othree/html5.vim'
+Bundle 'ekalinin/Dockerfile.vim'
+
+Bundle 'tpope/vim-classpath'
+Bundle 'tpope/vim-fireplace'
+Bundle 'guns/vim-clojure-static'
+Bundle 'kien/rainbow_parentheses.vim'
+" Bundle 'vim-scripts/paredit.vim'
 
 filetype plugin indent on     " required!
 
@@ -42,11 +45,29 @@ let g:solarized_termtrans = 1
 set background=light
 colorscheme solarized
 
-let g:vimclojure#ParenRainbow=1
+let g:rbpt_colorpairs = [
+  \ [ '13', '#6c71c4'],
+  \ [ '5',  '#d33682'],
+  \ [ '1',  '#dc322f'],
+  \ [ '9',  '#cb4b16'],
+  \ [ '3',  '#b58900'],
+  \ [ '2',  '#859900'],
+  \ [ '6',  '#2aa198'],
+  \ [ '4',  '#268bd2'],
+  \ ]
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
 
 set tabstop=2
 set shiftwidth=2
 set expandtab
+
+" Display tabs and trailing spaces visually
+set list listchars=tab:\ \ ,trail:·
 
 set smartcase
 set incsearch
@@ -58,5 +79,4 @@ set laststatus=2
 
 set directory=/tmp
 
-" let g:ctrlp_map = '<c-p>'
-map <C-t> :CtrlP<CR>
+nnoremap <leader>r :!touch .gitignore<CR><CR>
