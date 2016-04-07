@@ -13,6 +13,9 @@ alias ohmyzsh="vim ~/.oh-my-zsh"
 alias lsl="ls -alh"
 alias gd="git diff"
 alias gs="git status"
+alias docker-logs-truncate="docker-machine ssh default -- 'sudo find /var/lib/docker/containers/ -iname \"*json.log\"|xargs -I{} sudo dd if=/dev/null of={}'"
+
+rpoop () { repeat 10000 (fswatch -1 -m kqueue_monitor .gitignore; docker-compose run --rm web bundle exec zeus rspec $@ --order defined --fail-fast) }
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -47,12 +50,14 @@ NODE_PATH=/usr/local/lib/node_modules:"${PATH}"
 export NODE_PATH
 
 export DYLD_LIBRARY_PATH="$MAGICK_HOME/lib/"
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export RBENV_ROOT=/usr/local/var/rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init - zsh)"; fi
 
 export EDITOR="vim"
 bindkey -v 
 
 # vi style incremental search
+
 bindkey '^R' history-incremental-search-backward
 bindkey '^S' history-incremental-search-forward
 bindkey '^P' history-search-backward
@@ -60,4 +65,8 @@ bindkey '^N' history-search-forward
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
+export LC_ALL=en_US.UTF-8
+eval "$(docker-machine env default)"
+
 setopt AUTO_CD
+unsetopt correct_all
