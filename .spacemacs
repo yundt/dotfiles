@@ -273,6 +273,12 @@ you should place you code here."
    (define-key key-translation-map (kbd "s-j") [down])
    (define-key key-translation-map (kbd "s-k") [up])
    (define-key key-translation-map (kbd "s-l") [right])
+
+   ;; Word boundaries that I'm more used to
+   (modify-syntax-entry ?_ "w")
+
+   (modify-syntax-entry ?- "w")
+   (modify-syntax-entry ?: "w")
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
