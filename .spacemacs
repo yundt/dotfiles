@@ -277,8 +277,8 @@ you should place you code here."
    ;; Word boundaries that I'm more used to
    (modify-syntax-entry ?_ "w")
 
-   (modify-syntax-entry ?- "w")
-   (modify-syntax-entry ?: "w")
+   (modify-syntax-entry ?- "w" clojure-mode-syntax-table)
+   (modify-syntax-entry ?: "w" clojure-mode-syntax-table)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
