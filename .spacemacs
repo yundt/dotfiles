@@ -267,6 +267,12 @@ you should place you code here."
      evil-insert-state-map
      (kbd "C-w")
      (lambda () (interactive) (set-transient-map 'evil-window-map)))
+
+   ;; CMD+hjkl as arrow keys
+   (define-key key-translation-map (kbd "s-h") [left])
+   (define-key key-translation-map (kbd "s-j") [down])
+   (define-key key-translation-map (kbd "s-k") [up])
+   (define-key key-translation-map (kbd "s-l") [right])
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
