@@ -27,7 +27,8 @@ values."
      ;; auto-completion
      ;; better-defaults
      emacs-lisp
-     ;; git
+     git
+     github
      ;; markdown
      ;; org
      osx
@@ -37,7 +38,7 @@ values."
      ;; spell-checking
      ;; syntax-checking
      themes-megapack
-     ;; version-control
+     version-control
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
