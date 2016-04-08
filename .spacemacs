@@ -263,6 +263,8 @@ you should place you code here."
    ;; documentation of it.
    (set-quit-char "C-c")
 
+   ;; Makes vim-like window management work in insert mode too
+   ;; to make terminal and REPL windows sane.
    (define-key
      evil-insert-state-map
      (kbd "C-w")
