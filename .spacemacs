@@ -256,6 +256,7 @@ you should place you code here."
   (defun my-esc (prompt)
     (cond ((or (evil-insert-state-p)
                (evil-replace-state-p)
+               (evil-lisp-state-p)
                (evil-visual-state-p))
            [escape])))
 
