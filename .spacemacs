@@ -276,11 +276,11 @@ you should place you code here."
    (define-key key-translation-map (kbd "s-k") [up])
    (define-key key-translation-map (kbd "s-l") [right])
 
-   ;; Word boundaries that I'm more used to
-   (modify-syntax-entry ?_ "w")
+  (defun set-my-clojure-mode-syntax-table ()
+    (modify-syntax-entry ?- "w" clojure-mode-syntax-table)
+    (modify-syntax-entry ?: "w" clojure-mode-syntax-table))
 
-   (modify-syntax-entry ?- "w" clojure-mode-syntax-table)
-   (modify-syntax-entry ?: "w" clojure-mode-syntax-table)
+  (add-hook 'clojure-mode-hook 'set-my-clojure-mode-syntax-table)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
