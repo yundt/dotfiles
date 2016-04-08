@@ -24,7 +24,7 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     ;; auto-completion
+     auto-completion
      ;; better-defaults
      emacs-lisp
      git
@@ -249,32 +249,39 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place you code here."
 
+  ;; Some fancy toggles
+  (spacemacs/toggle-auto-completion-on)
+  (spacemacs/toggle-aggressive-indent-globally-on)
+
   (defun my-esc (prompt)
     (cond ((or (evil-insert-state-p)
                (evil-replace-state-p)
                (evil-visual-state-p))
-       [escape])))
+           [escape])))
 
-   (define-key key-translation-map (kbd "C-c") 'my-esc)
-   ;; Works around the fact that Evil uses read-event directly when in operator state, which
-   ;; doesn't use the key-translation-map.
-   (define-key evil-operator-state-map (kbd "C-c") 'keyboard-quit)
-   ;; Not sure what behavior this changes, but might as well set it, seeing the Elisp manual's
-   ;; documentation of it.
-   (set-quit-char "C-c")
+  (define-key key-translation-map (kbd "C-c") 'my-esc)
+  ;; Works around the fact that Evil uses read-event directly when in operator state, which
+  ;; doesn't use the key-translation-map.
+  (define-key evil-operator-state-map (kbd "C-c") 'keyboard-quit)
+  ;; Not sure what behavior this changes, but might as well set it, seeing the Elisp manual's
+  ;; documentation of it.
+  (set-quit-char "C-c")
 
-   ;; Makes vim-like window management work in insert mode too
-   ;; to make terminal and REPL windows sane.
-   (define-key
-     evil-insert-state-map
-     (kbd "C-w")
-     (lambda () (interactive) (set-transient-map 'evil-window-map)))
+  ;; Makes vim-like window management work in insert mode too
+  ;; to make terminal and REPL windows sane.
+  (define-key
+    evil-insert-state-map
+    (kbd "C-w")
+    (lambda () (interactive) (set-transient-map 'evil-window-map)))
 
-   ;; CMD+hjkl as arrow keys
-   (define-key key-translation-map (kbd "s-h") [left])
-   (define-key key-translation-map (kbd "s-j") [down])
-   (define-key key-translation-map (kbd "s-k") [up])
-   (define-key key-translation-map (kbd "s-l") [right])
+  ;; CMD+hjkl as arrow keys
+  (define-key key-translation-map (kbd "s-h") [left])
+  (define-key key-translation-map (kbd "s-j") [down])
+  (define-key key-translation-map (kbd "s-k") [up])
+  (define-key key-translation-map (kbd "s-l") [right])
+
+  ;; Word boundaries that I'm more used to
+  (modify-syntax-entry ?_ "w")
 
   (defun set-my-clojure-mode-syntax-table ()
     (modify-syntax-entry ?- "w" clojure-mode-syntax-table)
