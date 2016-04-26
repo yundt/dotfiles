@@ -289,6 +289,11 @@ you should place you code here."
     (modify-syntax-entry ?: "w" clojure-mode-syntax-table))
 
   (add-hook 'clojure-mode-hook 'set-my-clojure-mode-syntax-table)
+
+  ;; Clojure reloaded.repl reloading:
+  (add-hook 'cider-mode-hook
+            (lambda ()
+              (add-hook 'after-save-hook 'cider-load-buffer nil 'make-it-local)))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
