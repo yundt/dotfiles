@@ -291,10 +291,10 @@ you should place you code here."
   (add-hook 'clojure-mode-hook 'set-my-clojure-mode-syntax-table)
 
   (defun nrepl-reset ()
-    (nrepl-sync-request:eval
-     "(do (ns user) (reset))"
-     (cider-current-connection)
-     (cider-current-session)))
+    (print (nrepl-sync-request:eval
+            "(do (ns user) (reset))"
+            (cider-current-connection)
+            (cider-current-session))))
 
   (add-hook 'cider-mode-hook
             (lambda ()
