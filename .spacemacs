@@ -290,10 +290,15 @@ you should place you code here."
 
   (add-hook 'clojure-mode-hook 'set-my-clojure-mode-syntax-table)
 
-  ;; Clojure reloaded.repl reloading:
+  (defun nrepl-reset ()
+    (nrepl-sync-request:eval
+     "(do (ns user) (reset))"
+     (cider-current-connection)
+     (cider-current-session)))
+
   (add-hook 'cider-mode-hook
             (lambda ()
-              (add-hook 'after-save-hook 'cider-load-buffer nil 'make-it-local)))
+              (add-hook 'after-save-hook 'nrepl-reset nil 'make-it-local)))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
