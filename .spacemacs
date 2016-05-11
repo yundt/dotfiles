@@ -290,6 +290,8 @@ you should place you code here."
 
   (add-hook 'clojure-mode-hook 'set-my-clojure-mode-syntax-table)
 
+  (setq cljr-warn-on-eval nil)
+
   (defun nrepl-reset ()
     (interactive)
     (cider-interactive-eval "(require 'clojure.tools.namespace.repl)
