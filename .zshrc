@@ -49,6 +49,8 @@ export PATH
 NODE_PATH=/usr/local/lib/node_modules:"${PATH}"
 export NODE_PATH
 
+export PATH=./.git/safe/../../bin:"${PATH}"
+
 export DYLD_LIBRARY_PATH="$MAGICK_HOME/lib/"
 export RBENV_ROOT=/usr/local/var/rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init - zsh)"; fi
@@ -66,7 +68,8 @@ bindkey '^N' history-search-forward
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
 export LC_ALL=en_US.UTF-8
-eval "$(docker-machine env default)"
+
+setopt HIST_IGNORE_SPACE
 
 setopt AUTO_CD
 unsetopt correct_all

@@ -32,7 +32,11 @@ Bundle 'tpope/vim-classpath'
 Bundle 'tpope/vim-fireplace'
 Bundle 'guns/vim-clojure-static'
 Bundle 'kien/rainbow_parentheses.vim'
-" Bundle 'vim-scripts/paredit.vim'
+
+Bundle 'tpope/vim-sexp-mappings-for-regular-people'
+Bundle 'guns/vim-sexp'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-surround'
 
 filetype plugin indent on     " required!
 
@@ -80,3 +84,4 @@ set laststatus=2
 set directory=/tmp
 
 nnoremap <leader>r :!touch .gitignore<CR><CR>
+let g:sexp_insert_after_wrap = 0
