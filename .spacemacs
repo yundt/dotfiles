@@ -18,6 +18,9 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
+     sql
+     markdown
+     yaml
      clojure
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
@@ -251,7 +254,6 @@ you should place you code here."
 
   ;; Some fancy toggles
   (spacemacs/toggle-auto-completion-on)
-  (spacemacs/toggle-aggressive-indent-globally-on)
 
   (defun my-esc (prompt)
     (cond ((or (evil-insert-state-p)
@@ -289,19 +291,29 @@ you should place you code here."
     (modify-syntax-entry ?: "w" clojure-mode-syntax-table))
 
   (add-hook 'clojure-mode-hook 'set-my-clojure-mode-syntax-table)
+  (add-hook 'clojure-mode-hook #'toggle-aggressive-indent-mode-on)
 
   (setq cljr-warn-on-eval nil)
 
-  (defun nrepl-reset ()
-    (interactive)
-    (cider-interactive-eval "(require 'clojure.tools.namespace.repl)
-                             (clojure.tools.namespace.repl/refresh)
-                             (ns user)
-                             (reset)"))
+ ;(defun nrepl-reset ()
+ ;  (interactive)
+ ;  (cider-interactive-eval "(require 'clojure.tools.namespace.repl)
+ ;                           (clojure.tools.namespace.repl/refresh)
+ ;                           (ns user)
+ ;                           (reset)"))
 
   (add-hook 'cider-mode-hook
             (lambda ()
               (add-hook 'after-save-hook 'nrepl-reset nil 'make-it-local)))
+
+  (defun setup-term-mode ()
+    (evil-local-set-key 'insert (kbd "C-r") 'send-C-r))
+
+  (defun send-C-r ()
+    (interactive)
+    (term-send-raw-string "\C-r"))
+
+  (add-hook 'term-mode-hook 'setup-term-mode)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
