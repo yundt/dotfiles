@@ -18,6 +18,12 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
+     csv
+     html
+     javascript
+     ruby
+     python
+     windows-scripts
      sql
      markdown
      yaml
@@ -284,14 +290,18 @@ you should place you code here."
   (define-key key-translation-map (kbd "s-l") [right])
 
   ;; Word boundaries that I'm more used to
-  (modify-syntax-entry ?_ "w")
+  (add-hook 'ruby-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+  (add-hook 'clojure-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+  (add-hook 'clojure-mode-hook #'(lambda () (modify-syntax-entry ?- "w")))
+  (add-hook 'clojure-mode-hook #'(lambda () (modify-syntax-entry ?: "w")))
 
-  (defun set-my-clojure-mode-syntax-table ()
-    (modify-syntax-entry ?- "w" clojure-mode-syntax-table)
-    (modify-syntax-entry ?: "w" clojure-mode-syntax-table))
+  (add-hook 'clojure-mode-hook #'spacemacs/toggle-aggressive-indent)
 
-  (add-hook 'clojure-mode-hook 'set-my-clojure-mode-syntax-table)
-  (add-hook 'clojure-mode-hook #'toggle-aggressive-indent-mode-on)
+  (defun yo ()
+    (interactive)
+    (save-buffer)
+    (cider-load-buffer)
+    (cider-test-run-project-tests))
 
   (setq cljr-warn-on-eval nil)
 
@@ -302,9 +312,11 @@ you should place you code here."
  ;                           (ns user)
  ;                           (reset)"))
 
-  (add-hook 'cider-mode-hook
-            (lambda ()
-              (add-hook 'after-save-hook 'nrepl-reset nil 'make-it-local)))
+  ;; (linum ((t (:background "#161616" :foreground "gray24"))))
+
+  ;; (add-hook 'cider-mode-hook
+  ;;           (lambda ()
+  ;;             (add-hook 'after-save-hook 'nrepl-reset nil 'make-it-local)))
 
   (defun setup-term-mode ()
     (evil-local-set-key 'insert (kbd "C-r") 'send-C-r))
@@ -329,4 +341,4 @@ you should place you code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(linum ((t (:background "#161616" :foreground "gray24")))))
+ '(linum ((t (:foreground "gray24")))))
